@@ -1,0 +1,156 @@
+/* --- Variables --- */
+:root {
+  --color-bg: #ffffff;
+  --color-text: #1a1a1a;
+  --color-muted: #666666;
+  --color-accent: #2563eb;
+  --color-card-bg: #f5f5f5;
+  --max-width: 760px;
+  --font: system-ui, -apple-system, sans-serif;
+}
+
+/* --- Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Base --- */
+body {
+  font-family: var(--font);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  padding: 0 1rem;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* --- Header & Nav --- */
+header {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+nav a:hover {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+/* --- Main --- */
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+section {
+  padding: 4rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+section:last-child {
+  border-bottom: none;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+#about p + p {
+  margin-top: 1rem;
+}
+
+.about-body {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+}
+
+.bio-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.bio-text p + p {
+  margin-top: 1rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  color: var(--color-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Project Grid --- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--color-card-bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.project-card h3 {
+  font-size: 1rem;
+}
+
+.project-card p {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  flex: 1;
+}
+
+/* --- Footer --- */
+footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 0;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
