@@ -148,7 +148,16 @@ def build():
         if not title:
             title = slug.replace("-", " ").title()
 
-        content_html = markdown.markdown(text, extensions=["fenced_code", "tables"])
+        # Strip the title/date header lines before converting to HTML
+        # so they don't duplicate what the template already renders.
+        body_lines = text.strip().splitlines()
+        if body_lines and body_lines[0].startswith("# "):
+            body_lines = body_lines[1:]
+        if body_lines and re.match(r"^date:\s*\d{4}-\d{2}-\d{2}", body_lines[0]):
+            body_lines = body_lines[1:]
+        body_text = "\n".join(body_lines).lstrip("\n")
+
+        content_html = markdown.markdown(body_text, extensions=["fenced_code", "tables"])
 
         html = post_template(title, post_date, content_html)
         out_path = os.path.join(HTML_DIR, f"{slug}.html")
